@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The AlphaGraph</title>
+<meta name="description" content="The AlphaGraph: technology documentaries, artificial intelligence and tech skills.">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="icon" href="2983.jpg">
+<link rel="preload" as="image" href="2983.jpg">
+<link rel="stylesheet" href="style.css">
+<script src="script.js" defer></script>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-youtube" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2C2 8.8 2 12 2 12s0 3.2.4 4.8a2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8c.4-1.6.4-4.8.4-4.8s0-3.2-.4-4.8zM10 15V9l5.2 3z"/></symbol>
+  <symbol id="i-telegram" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></symbol>
+  <symbol id="i-facebook" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></symbol>
+  <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.4" cy="6.6" r="1.3"/></symbol>
+  <symbol id="i-threads" viewBox="0 0 24 24"><path d="M16.2 8.4C15.4 5.9 13.9 4.5 11.8 4.5 8.4 4.5 6 7.5 6 12s2.4 7.5 6.1 7.5c3 0 5-1.6 5-3.9 0-2.2-1.9-3.3-4.2-3.3-1.8 0-3 .8-3 2.1 0 1.2 1 2 2.3 2 1.9 0 3-1.4 3-4.200 0-2.600-1.500-4-3.600-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-share" viewBox="0 0 24 24"><path d="M12 15V3m0 0L8 7m4-4 4 4M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+
+<div class="page">
+  <header class="bar">
+    <button class="icon-btn" id="share-btn" type="button" aria-label="Share this page">
+      <svg width="20" height="20"><use href="#i-share"/></svg>
+    </button>
+    <button class="icon-btn" id="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menu">
+      <svg width="20" height="20"><use href="#i-menu"/></svg>
+    </button>
+  </header>
+
+  <nav class="menu" id="menu" aria-label="Menu" inert>
+    <button type="button" data-dialog="about-dialog">About</button>
+    <a href="https://youtube.com/@thealphagraph" rel="noopener">YouTube Channel</a>
+    <a href="https://facebook.com/thealphagraph" rel="noopener">Facebook Page</a>
+    <button type="button" data-dialog="contact-dialog">Contact</button>
+  </nav>
+
+  <main>
+    <section class="profile">
+      <div class="logo"><img src="2983.jpg" width="256" height="256" alt="The AlphaGraph logo" fetchpriority="high" decoding="async"></div>
+      <h1>The AlphaGraph</h1>
+      <p class="tagline">Technology documentaries, AI and tech skills</p>
+    </section>
+
+    <ul class="links">
+      <li><a class="link" href="https://youtube.com/@thealphagraph" rel="noopener"><svg><use href="#i-youtube"/></svg><span>YouTube</span></a></li>
+      <li><a class="link" href="https://t.me/thealphagraph" rel="noopener"><svg><use href="#i-telegram"/></svg><span>Telegram</span></a></li>
+      <li><a class="link" href="https://x.com/thealphagraph" rel="noopener"><svg><use href="#i-x"/></svg><span>X (Twitter)</span></a></li>
+      <li><a class="link" href="https://facebook.com/thealphagraph" rel="noopener"><svg><use href="#i-facebook"/></svg><span>Facebook</span></a></li>
+      <li><a class="link" href="https://instagram.com/thealphagraph" rel="noopener"><svg><use href="#i-instagram"/></svg><span>Instagram</span></a></li>
+      <li><a class="link" href="https://threads.com/thealphagraph" rel="noopener"><svg><use href="#i-threads"/></svg><span>Threads</span></a></li>
+    </ul>
+  </main>
+
+  <footer class="foot">&copy; <span id="year">2026</span> The AlphaGraph. All rights reserved.</footer>
+</div>
+
+<dialog id="about-dialog" aria-labelledby="about-title">
+  <div class="inner">
+    <h2 id="about-title">About The AlphaGraph</h2>
+    <p>The AlphaGraph is a media channel that covers technology documentaries, artificial intelligence and tech skills. We publish on our YouTube channel and on our other social accounts.</p>
+    <p>We are also building our own platform. It will reduce our dependence on social media sites, and we will bring all of this content together there.</p>
+    <form method="dialog"><button class="close" type="submit">Close</button></form>
+  </div>
+</dialog>
+
+<dialog id="contact-dialog" aria-labelledby="contact-title">
+  <div class="inner">
+    <h2 id="contact-title">Contact</h2>
+    <p>To reach The AlphaGraph team, write to us at:</p>
+    <p><a class="mail" href="mailto:mail@thealphagraph.com">mail@thealphagraph.com</a></p>
+    <form method="dialog"><button class="close" type="submit">Close</button></form>
+  </div>
+</dialog>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+</body>
+</html>
