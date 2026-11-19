@@ -16,6 +16,29 @@
     timers[el.id] = setTimeout(function () { el.classList.remove('show'); }, 1800);
   }
 
+  /* Tap ripple on every button and link */
+  document.addEventListener('pointerdown', function (e) {
+    var t = e.target.closest('.link, .icon-btn, .menu > *, .btn, .logo, .close');
+    if (!t) return;
+    var r = t.getBoundingClientRect(), size = Math.max(r.width, r.height) * 2;
+    var d = document.createElement('span');
+    d.className = 'ripple';
+    d.style.width = d.style.height = size + 'px';
+    d.style.left = (e.clientX - r.left - size / 2) + 'px';
+    d.style.top = (e.clientY - r.top - size / 2) + 'px';
+    t.appendChild(d);
+    d.addEventListener('animationend', function () { d.remove(); });
+  });
+
+  /* Let the ripple play for a moment, then open the panel */
+  function later(dlg, ms, before) {
+    setTimeout(function () {
+      if (dlg.open) return;
+      if (before) before();
+      dlg.showModal();
+    }, ms);
+  }
+
   /* Menu */
   function setMenu(open) {
     menu.classList.toggle('open', open);
@@ -38,7 +61,7 @@
     btn.addEventListener('click', function () {
       var dlg = $(btn.getAttribute('data-dialog'));
       setMenu(false);
-      if (dlg && dlg.showModal) dlg.showModal();
+      if (dlg && dlg.showModal) later(dlg, 120);
     });
   });
   document.querySelectorAll('dialog').forEach(function (dlg) {
@@ -68,7 +91,7 @@
     $('confirm-title').textContent = 'Open ' + name + '?';
     $('confirm-text').textContent = 'This will take you to The AlphaGraph on ' + name + '.';
     openLink.href = a.href;
-    confirmDlg.showModal();
+    later(confirmDlg, 180);
   });
   $('confirm-cancel').addEventListener('click', function () { confirmDlg.close(); });
   openLink.addEventListener('click', function () { setTimeout(function () { confirmDlg.close(); }, 0); });
@@ -99,8 +122,7 @@
   }
 
   $('logo-btn').addEventListener('click', function () {
-    reset();
-    viewer.showModal();
+    later(viewer, 150, reset);
     if (!logoFile && window.fetch) {
       fetch('2983.jpg').then(function (r) { return r.blob(); }).then(function (b) {
         logoFile = new File([b], 'The-AlphaGraph-logo.jpg', { type: b.type || 'image/jpeg' });
@@ -162,4 +184,4 @@
     }
   });
 })();
-                         
+        
