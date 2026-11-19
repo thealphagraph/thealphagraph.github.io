@@ -5,6 +5,7 @@
   --text: #f2f2f2;
   --muted: #9b9b9b;
   --gold: #d4af37;
+  --ring: 2px;
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
@@ -58,8 +59,9 @@ button { font: inherit; color: inherit; }
 .menu {
   position: absolute;
   top: calc(max(16px, env(safe-area-inset-top)) + 52px);
-  right: 20px;
+  left: 20px;
   z-index: 10;
+  transform-origin: top left;
   display: flex;
   flex-direction: column;
   width: 220px;
@@ -112,7 +114,7 @@ button { font: inherit; color: inherit; }
   object-fit: cover;
 }
 
-h1 { margin-top: 20px; font-size: 1.5rem; font-weight: 700; letter-spacing: .01em; }
+h1 { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 20px; font-size: 1.5rem; font-weight: 700; letter-spacing: .01em; }
 .tagline { margin-top: 4px; font-size: .9375rem; color: var(--muted); }
 
 /* Links */
@@ -130,7 +132,7 @@ h1 { margin-top: 20px; font-size: 1.5rem; font-weight: 700; letter-spacing: .01e
   gap: 16px;
   min-height: 60px;
   padding: 0 20px;
-  border: 1px solid var(--line);
+  border: var(--ring) solid var(--gold);
   border-radius: 16px;
   background: var(--surface);
   font-size: 1.0625rem;
@@ -138,10 +140,10 @@ h1 { margin-top: 20px; font-size: 1.5rem; font-weight: 700; letter-spacing: .01e
   transition: transform .15s ease, border-color .15s ease;
 }
 .link svg { width: 26px; height: 26px; flex: none; fill: currentColor; }
-.link:active { transform: scale(.98); border-color: var(--gold); }
+.link:active { transform: scale(.98); background: #1c1c1c; }
 
 @media (hover: hover) {
-  .link:hover, .icon-btn:hover { border-color: var(--gold); }
+  .icon-btn:hover { border-color: var(--gold); }
 }
 
 /* Footer */
@@ -254,4 +256,27 @@ dialog.viewer[open] { display: flex; flex-direction: column; }
   user-select: none;
   -webkit-user-select: none;
   will-change: transform;
-  }
+}
+
+.verified { flex: none; width: 22px; height: 22px; }
+
+/* Tap animation */
+.link, .icon-btn, .menu > *, .btn, .logo, .close { position: relative; overflow: hidden; }
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--gold);
+  opacity: .35;
+  pointer-events: none;
+  transform: scale(0);
+  animation: ripple .55s ease-out forwards;
+}
+.btn.primary .ripple { background: #fff; }
+@keyframes ripple { to { transform: scale(1); opacity: 0; } }
+
+/* Panels open with a short pop */
+dialog[open] { animation: pop .24s cubic-bezier(.2, .9, .3, 1.15); }
+dialog[open]::backdrop { animation: fade .24s ease-out; }
+dialog.viewer[open] { animation: fade .2s ease-out; }
+@keyframes pop { from { opacity: 0; transform: translateY(14px) scale(.94); } to { opacity: 1; transform: none; } }
+@keyframes fade { from { opacity: 0; } }
