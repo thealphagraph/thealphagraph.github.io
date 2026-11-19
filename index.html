@@ -43,7 +43,7 @@
 
   <main>
     <section class="profile">
-      <div class="logo"><img src="2983.jpg" width="256" height="256" alt="The AlphaGraph logo" fetchpriority="high" decoding="async"></div>
+      <button class="logo" id="logo-btn" type="button" aria-label="View logo"><img src="2983.jpg" width="256" height="256" alt="The AlphaGraph logo" fetchpriority="high" decoding="async"></button>
       <h1>The AlphaGraph</h1>
       <p class="tagline">Technology documentaries, AI and tech skills</p>
     </section>
@@ -77,6 +77,33 @@
     <p><a class="mail" href="mailto:mail@thealphagraph.com">mail@thealphagraph.com</a></p>
     <form method="dialog"><button class="close" type="submit">Close</button></form>
   </div>
+</dialog>
+
+<dialog id="confirm-dialog" aria-labelledby="confirm-title">
+  <div class="inner">
+    <h2 id="confirm-title">Open link?</h2>
+    <p id="confirm-text"></p>
+    <div class="actions">
+      <button class="btn" type="button" id="confirm-cancel">Cancel</button>
+      <a class="btn primary" id="confirm-open" href="#" rel="noopener">Open</a>
+    </div>
+  </div>
+</dialog>
+
+<dialog id="viewer" class="viewer" aria-label="The AlphaGraph logo">
+  <div class="top">
+    <form method="dialog">
+      <button class="icon-btn" type="submit" aria-label="Close">
+        <svg width="20" height="20" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </form>
+  </div>
+  <div class="stage" id="stage"><img id="viewer-img" src="2983.jpg" alt="The AlphaGraph logo" draggable="false"></div>
+  <div class="actions">
+    <a class="btn" id="dl-btn" href="2983.jpg" download="The-AlphaGraph-logo.jpg">Download</a>
+    <button class="btn" id="viewer-share" type="button">Share</button>
+  </div>
+  <div class="toast" id="viewer-toast" role="status" aria-live="polite"></div>
 </dialog>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
